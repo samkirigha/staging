@@ -30,5 +30,19 @@ namespace ticketsservice.Controllers
             var result = await _ticketService.CreateTicket(createTicketDto);
             return Ok(result);
         }
+
+        [HttpDelete("ticketId")]
+        public async Task<IActionResult> DeleteTicket(Guid ticketId)
+        {
+            var result = await _ticketService.DeleteTicket(ticketId);
+            return Ok(result);
+        }
+
+        [HttpPut("ticketId")]
+        public async Task<IActionResult> UpdateTicket(Guid ticketId, CreateTicketDto createTicketDto)
+        {
+            var result = await _ticketService.UpdateTicket(ticketId, createTicketDto);
+            return Ok(result);
+        }
     }
 }

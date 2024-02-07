@@ -9,5 +9,6 @@ public class MappingProfile : Profile
     public MappingProfile()
     {
         CreateMap<CreateTicketDto, Models.Ticket>();
+        CreateMap<TicketResponseDto, Models.Ticket>().ReverseMap();
     }
 }

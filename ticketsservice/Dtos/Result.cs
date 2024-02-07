@@ -5,8 +5,8 @@ namespace ticketsservice.Dtos;
 public class Result
 {
     public bool Succeeded => Error == null;
-    public string Error { get; protected set; }
-    public string Message { get; protected set; }
+    public string? Error { get; protected set; }
+    public string? Message { get; protected set; }
     public HttpStatusCode StatusCode { get; protected set; }
 
     public static Result Success(HttpStatusCode statusCode, string Message) =>
@@ -19,9 +19,9 @@ public class Result
 public class Result<TValue>
 {
     public bool Succeeded => Error == null;
-    public string Error { get; protected set; }
+    public string? Error { get; protected set; }
     public HttpStatusCode StatusCode { get; protected set; }
-    public TValue Value { get; protected set; }
+    public TValue? Value { get; protected set; }
 
     public static Result<TValue> Success(HttpStatusCode statusCode, TValue value) =>
         new Result<TValue> { StatusCode = statusCode, Value = value };
