@@ -13,6 +13,8 @@ public class TicketConfig : IEntityTypeConfiguration<Ticket>
         builder.Property(b => b.RowVersion)
                 .ValueGeneratedOnAddOrUpdate()
                 .IsRowVersion();
+        builder.Property(p => p.TicketID)
+                .ValueGeneratedOnAdd();
         builder.HasOne<Category>(c => c.Category)
                 .WithMany(c => c.Tickets)
                 .HasForeignKey(p => p.CategoryID);

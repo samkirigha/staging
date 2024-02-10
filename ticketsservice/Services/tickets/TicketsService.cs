@@ -25,12 +25,30 @@ public class TicketService : ITicketService
     public async Task<Result> CreateTicket(CreateTicketDto createTicketDto)
     {
         try
-        {  
-        var TicketToCreate = _mapper.Map<Ticket>(createTicketDto);
-        await _dbContext.Tickets.AddAsync(TicketToCreate);
-        await _dbContext.SaveChangesAsync();
+        {
+            var TicketToCreate = _mapper.Map<Ticket>(createTicketDto);
+            await _dbContext.Tickets.AddAsync(TicketToCreate);
+            await _dbContext.SaveChangesAsync();
 
-        return Result.Success(HttpStatusCode.OK, "Tickets created");
+            return Result.Success(HttpStatusCode.OK, "Ticket created");
+        }
+        catch (Exception ex)
+        {
+            return Result.Failed(HttpStatusCode.InternalServerError, $"Error: {ex.Message} - {ex.InnerException.Message} - {ex.StackTrace}.");
+            throw;
+        }
+    }
+
+    public async Task<Result> CreateTickets(IEnumerable<CreateTicketDto> tickets)
+    {
+        try
+        {
+            if (!tickets.Any()) throw new ArgumentException("Add atleast one ticket");
+            var ticketsToCreates = _mapper.Map<IEnumerable<Ticket>>(tickets);
+            await _dbContext.Tickets.AddRangeAsync(ticketsToCreates);
+            await _dbContext.SaveChangesAsync();
+
+            return Result.Success(HttpStatusCode.OK, "Tickets created");
         }
         catch (Exception ex)
         {
@@ -43,18 +61,18 @@ public class TicketService : ITicketService
     {
         try
         {
-        var existingTicket = await _dbContext.Tickets.Where(t => (bool)!t.isDeleted).Where(t => t.TicketID == ticketId).FirstOrDefaultAsync();
-        if (existingTicket == null)
-            return Result.Success(HttpStatusCode.NotFound, "Ticket not found");
+            var existingTicket = await _dbContext.Tickets.Where(t => (bool)!t.isDeleted).Where(t => t.TicketID == ticketId).FirstOrDefaultAsync();
+            if (existingTicket == null)
+                return Result.Success(HttpStatusCode.NotFound, "Ticket not found");
 
-        existingTicket.isDeleted = true;
+            existingTicket.isDeleted = true;
 
-        await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
 
-        return Result.Success(HttpStatusCode.OK, "Ticket Deleted");
-            
+            return Result.Success(HttpStatusCode.OK, "Ticket Deleted");
+
         }
-       catch (Exception ex)
+        catch (Exception ex)
         {
             return Result.Failed(HttpStatusCode.InternalServerError, $"Error: {ex.Message} - {ex.InnerException.Message} - {ex.StackTrace}.");
             throw;
@@ -79,14 +97,14 @@ public class TicketService : ITicketService
         try
         {
             var ticket = await _dbContext.Tickets.Where(t => t.TicketID == ticketId).FirstOrDefaultAsync();
-            if(ticket is null)
-             {
+            if (ticket is null)
+            {
                 return Result<TicketResponseDto>.Failed(HttpStatusCode.NotFound, "Ticket not found");
             }
             var result = _mapper.Map<TicketResponseDto>(ticket);
             return Result<TicketResponseDto>.Success(HttpStatusCode.OK, result);
         }
-         catch (Exception ex)
+        catch (Exception ex)
         {
             return Result<TicketResponseDto>.Failed(HttpStatusCode.InternalServerError, $"Error: {ex.Message} - {ex.InnerException.Message} - {ex.StackTrace}.");
             throw;

@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using ticketsservice.Dtos;
-using ticketsservice.EF;
 using ticketsservice.Services;
 
 namespace ticketsservice.Controllers
@@ -28,6 +26,22 @@ namespace ticketsservice.Controllers
         public async Task<IActionResult> CreateTicket(CreateTicketDto createTicketDto)
         {
             var result = await _ticketService.CreateTicket(createTicketDto);
+            return Ok(result);
+        }
+
+        [HttpPatch("csv-tickets")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> CreateTickets(IEnumerable<CreateTicketDto> tickets)
+        {
+            var result = await _ticketService.CreateTickets(tickets);
+            return Ok(result);
+        }
+
+        [HttpGet("{ticketId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult> GetSingleTicketById(Guid ticketId)
+        {
+            var result = await _ticketService.GetSingleTicketById(ticketId);
             return Ok(result);
         }
 

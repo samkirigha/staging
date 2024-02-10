@@ -23,8 +23,9 @@ public class Startup
         services.AddSwaggerGenNewtonsoftSupport();
 
         services.AddHttpContextAccessor();
+        services.AddSwaggerGen();
 
-         // AutoMapper
+        // AutoMapper
         services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         services.AddControllers()
@@ -48,7 +49,8 @@ public class Startup
                    options.EnableSensitiveDataLogging();
            }
        );
-       services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<ITicketService, TicketService>();
+        services.AddScoped<ICategoryService, CategoryService>();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +59,8 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tickets API"); });
         }
 
         app.UseHttpsRedirection();
@@ -67,7 +71,5 @@ public class Startup
         app.UseAuthorization();
         app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
-        app.UseSwagger();
-        app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Tickets API"); });
     }
 }

@@ -12,6 +12,8 @@ public class CategoryConfig : IEntityTypeConfiguration<Category>
         builder.Property(b => b.RowVersion)
                 .ValueGeneratedOnAddOrUpdate()
                 .IsRowVersion();
+        builder.Property(p => p.CategoryID)
+                .ValueGeneratedOnAdd();
         builder.HasMany(t => t.Tickets)
                 .WithOne(c => c.Category)
                 .HasForeignKey(p => p.TicketID);

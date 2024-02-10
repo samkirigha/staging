@@ -1,0 +1,9 @@
+{
+    "dataworkspace.excludedProjects": [
+        "ticketsservice/db/db/db.sqlproj",
+        "ticketsservice/db/tickets-db/tickets-db.sqlproj",
+        "ticketsservice/db/tickets/tickets.sqlproj",
+        "ticketsservice/db/db/ticket/ticket.sqlproj",
+        "ticketsservice/db/dbo/tickets/tickets.sqlproj"
+    ]
+}

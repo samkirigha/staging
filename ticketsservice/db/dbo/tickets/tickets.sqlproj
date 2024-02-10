@@ -2,8 +2,8 @@
 <Project DefaultTargets="Build">
   <Sdk Name="Microsoft.Build.Sql" Version="0.1.12-preview" />
   <PropertyGroup>
-    <Name>db</Name>
-    <ProjectGuid>{0AD85B6B-67C8-477F-93B0-3C7CF058178F}</ProjectGuid>
+    <Name>tickets</Name>
+    <ProjectGuid>{CDFC6A79-4998-4A7A-B46C-96B600469C1E}</ProjectGuid>
     <DSP>Microsoft.Data.Tools.Schema.Sql.SqlAzureV12DatabaseSchemaProvider</DSP>
     <ModelCollation>1033, CI</ModelCollation>
   </PropertyGroup>
