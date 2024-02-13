@@ -1,13 +1,12 @@
-
 services:
-  db:
+  sqlpreview:
+    image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
     environment:
       ACCEPT_EULA: "Y"
-      SA_PASSWORD: "${DB_PASSWORD}"
-    image: mcr.microsoft.com/mssql/server:2022-latest
-    ports: 
-      - 14331:1433
-    volumes:
-      - tickets-storage:/var/opt/mssql
-volumes:
-  tickets-storage:
+      MSSQL_SA_PASSWORD: "tickets@@pa55W0rd"
+      MSSQL_PID: "Evaluation"
+    ports:
+      - "1433:1433"
+    container_name: sqlpreview
+    hostname: sqlpreview
+    restart: unless-stopped
