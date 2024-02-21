@@ -6,6 +6,10 @@ project.lock.json
 nupkg/
 node_modules/
 *ticketsservice.sln
+MSSQL
+clusterDb
+.idea
+.vscode
 
 # Visual Studio Code
 #.vscode
