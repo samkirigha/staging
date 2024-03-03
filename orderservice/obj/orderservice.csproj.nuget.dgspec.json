@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {}
+    "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {}
   },
   "projects": {
-    "C:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {
+    "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
+        "projectUniqueName": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
         "projectName": "orderservice",
-        "projectPath": "C:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
+        "projectPath": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
         "packagesPath": "C:\\Users\\SamuelKirigha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\obj\\",
+        "outputPath": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\SamuelKirigha\\AppData\\Roaming\\NuGet\\NuGet.Config",

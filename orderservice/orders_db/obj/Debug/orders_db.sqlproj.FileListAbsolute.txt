@@ -1,0 +1,10 @@
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\bin\Debug\orders_db.dacpac
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\bin\Debug\orders_db.dll
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\bin\Debug\orders_db.pdb
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\orders_db.sqlproj.AssemblyReference.cache
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\Model.xml
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\refactor.xml
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\postdeploy.sql
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\predeploy.sql
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\orders_db.dll
+C:\Users\SamuelKirigha\projects\devops\orderservice\orders_db\obj\Debug\orders_db.pdb

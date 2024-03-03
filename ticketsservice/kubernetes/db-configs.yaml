@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: tickets-mssql-config
+data:
+  ACCEPT_EULA: "Y"
+  MSSQL_DATABASE: "tickets_db"

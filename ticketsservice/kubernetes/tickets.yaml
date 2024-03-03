@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-app
+  labels:
+    app: tickets-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tickets-app
+  template:
+    metadata:
+      name: tickets-app
+      labels:
+        app: tickets-app
+    spec:
+      containers:
+        - name: tickets-app
+          image: muhohoweb/tickets-service
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tickets-service
+spec:
+  selector:
+    app: tickets-app
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: ClusterIP
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: tickets-api-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: localhost
+      http:
+        paths:
+          - path: /tickets
+            pathType: Prefix
+            backend:
+              service:
+                name: tickets-service
+                port:
+                  number: 80
+      

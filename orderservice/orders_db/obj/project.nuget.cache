@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "Ru5L4iudHzNmgdrgaw6dUw/5KAxVWU8SMfJ15VmF9T565+kg5H8ZygH/FhIQ/RKk8hGZ+k4x+Ex6o5KGv8+H2w==",
+  "success": true,
+  "projectFilePath": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orders_db\\orders_db.sqlproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\SamuelKirigha\\.nuget\\packages\\microsoft.netframework.referenceassemblies\\1.0.0\\microsoft.netframework.referenceassemblies.1.0.0.nupkg.sha512",
+    "C:\\Users\\SamuelKirigha\\.nuget\\packages\\microsoft.netframework.referenceassemblies.net46\\1.0.0\\microsoft.netframework.referenceassemblies.net46.1.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
