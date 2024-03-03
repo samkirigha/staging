@@ -36,5 +36,4 @@ jobs:
 
     - name: Build Docker image
       run: docker build -t muhohoweb/tickets-service:latest .
-      with:
-        dockerfile: ./ticketsservice/Dockerfile
+      working-directory: ./ticketsservice/Dockerfile
