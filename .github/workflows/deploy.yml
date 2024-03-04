@@ -1,0 +1,31 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: Deployment Workflow
+
+on:
+  workflow_call:
+    inputs:
+      environment: 
+        required: true
+        type: string
+        description: 'The target environment (staging or production)'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+  
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 8.0.x
+      
+      - name: Checkout code
+        uses: actions/checkout@v2
+          
+      - name: Deploy to ${{inputs.environment}}
+        run: |
+          #Your deployment script or commands based on the environment
+          echo "Deploying to ${{inputs.environment}} environment"

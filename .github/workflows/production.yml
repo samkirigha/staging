@@ -1,25 +1,36 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: .NET
+name: Deploy to Production 
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_run:
+    workflows: ["Deployment Workflow"]
+    types:
+        - manual
+    branches:
+        - master
 
 jobs:
-  build:
-
+  deploy_production:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+    - name: Trigger Development Workflow for Prodcution
+      uses: actions/checkout@v2
+      with: 
+        ref: master
+        repository: samkirigha/devops
+        path: ./github/workflows/
+        token: ${{secrets.GITHUB_TOKEN}}
+
+    - name: Set environment variable
+      run: echo "environment=prodcution" >> $GITHUB_ENV
+
+    - name: Run Deployment Workflow
+      uses: ././github/workflows/deploy.yml
       with:
-        dotnet-version: 8.0.x
+        environment: production
 
     - name: Restore dependencies
       run: dotnet restore
@@ -33,16 +44,3 @@ jobs:
       uses: docker/setup-buildx-action@v1
       with:
         dockerfile: ./ticketsservice/Dockerfile
-
-    - name: Login to Docker Hub
-      uses: docker/login-action@v3
-      with:
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_TOKEN }}
-
-    - name: Build and push
-      uses: docker/build-push-action@v5
-      with:
-        context: ./ticketsservice
-        push: true
-        tags: muhohoweb/tickets-service:latest 
