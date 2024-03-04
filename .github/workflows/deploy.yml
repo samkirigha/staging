@@ -1,12 +1,10 @@
 name: Deployment Workflow
 
 on:
-  workflow_call:
-    inputs:
-      environment: 
-        required: true
-        type: string
-        description: 'The target environment (staging or production)'
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   deploy:
