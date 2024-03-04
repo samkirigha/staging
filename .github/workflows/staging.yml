@@ -19,10 +19,10 @@ jobs:
         ref: master
         repository: samkirigha/devops
         path: .github/workflows
-        token: ${{secrets.GITHUB_TOKEN}}
+        # token: ${{secrets.GITHUB_TOKEN}}
 
     - name: Set environment variable
-      run: echo "environment=staging" >> $GITHUB_ENV
+      run: echo "environment=staging"
 
     - name: Run Development Workflow
       uses: ./github/workflows/deploy.yml
