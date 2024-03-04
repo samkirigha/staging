@@ -2,9 +2,9 @@ name: Deploy to Production
 
 on:
     workflow_run:
-      workflows: ["Deployment Workflow"]
+      workflows: ["Deploy to Staging"]
       types:
-        - manual
+        - completed
       branches:
         - master
 
