@@ -46,9 +46,8 @@ jobs:
 
     - name: Build and push
       uses: docker/build-push-action@v5
-      working-directory: ./ticketsservice
       with:
-        context: .
+        context: ./ticketsservice
         push: true
         tags: muhohoweb/tickets-service:latest 
 
