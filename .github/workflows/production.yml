@@ -1,11 +1,11 @@
 name: Deploy to Production 
 
 on:
-  workflow_run:
-    workflows: ["Deployment Workflow"]
-    types:
+    workflow_run:
+      workflows: ["Deployment Workflow"]
+      types:
         - manual
-    branches:
+      branches:
         - master
 
 jobs:
@@ -25,7 +25,7 @@ jobs:
       run: echo "environment=prodcution"
 
     - name: Run Deployment Workflow
-      uses: ././github/workflows/deploy.yml
+      uses: ./.github/workflows/deploy.yml
       with:
         environment: production
 

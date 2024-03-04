@@ -25,6 +25,6 @@ jobs:
       run: echo "environment=staging"
 
     - name: Run Development Workflow
-      uses: ./github/workflows/deploy.yml
+      uses: ./.github/workflows/deploy.yml
       with:
         environment: staging
