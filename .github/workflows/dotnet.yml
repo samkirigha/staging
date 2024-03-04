@@ -40,8 +40,16 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_TOKEN }}
 
-    - name: Build Docker image
-      run: docker build -t muhohoweb/tickets-service:latest .
+    # - name: Build Docker image
+    #   run: docker build -t muhohoweb/tickets-service:latest .
+    #   working-directory: ./ticketsservice
+
+    - name: Build and push
+      uses: docker/build-push-action@v5
       working-directory: ./ticketsservice
+      with:
+        context: .
+        push: true
+        tags: user/app:latest
 
       #commment
