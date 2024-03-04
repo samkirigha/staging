@@ -1,12 +1,10 @@
 name: Deploy to Production 
 
 on:
-    workflow_run:
-      workflows: ["Deploy to Staging"]
-      types:
-        - completed
-      branches:
-        - master
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
 jobs:
   deploy_production:
