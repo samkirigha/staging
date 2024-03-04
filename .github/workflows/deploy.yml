@@ -1,12 +1,12 @@
 name: Deployment Workflow
 
 on:
-  workflow_call:
-    inputs:
-      environment:
-        description: 'The target environment'
-        type: string
-        required: true
+  workflow_dispatch:
+    # inputs:
+    #   environment:
+    #     description: 'The target environment'
+    #     type: string
+    #     required: true
 
 jobs:
   deploy:
