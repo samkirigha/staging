@@ -14,7 +14,7 @@ pipeline {
                 git url: 'https://github.com/samkirigha/staging.git', branch: 'master'
             }
         }
-    
+
         stage('Build Docker Image') {
             steps {
                 script {
