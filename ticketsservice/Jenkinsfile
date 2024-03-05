@@ -19,7 +19,6 @@ pipeline {
             steps {
                 script {
                     echo "Build the Image"
-
                     // Login to Docker registry if necessary
                     // sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     // Build and push Docker image
