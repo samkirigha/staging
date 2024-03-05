@@ -1,7 +1,5 @@
 pipeline {
-    agent {
-    label 'docker' 
-  }
+    agent any
 
     environment {
         // Define any environment variables needed
