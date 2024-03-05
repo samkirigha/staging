@@ -21,7 +21,7 @@ pipeline {
                     echo "Build the Image"
 
                     sh '''
-                        which docker
+                        whoami
 
                     '''
                     // Login to Docker registry if necessary
