@@ -21,7 +21,7 @@ pipeline {
                     echo "Build the Image"
 
                     sh '''
-                        /opt/homebrew/bin/docker buid -t muhohoweb/ticketsservice:3.0.0
+                        /opt/homebrew/bin/docker build -t muhohoweb/ticketsservice:3.0.0 ticketsservice
 
                     '''
                     // Login to Docker registry if necessary
