@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define any environment variables needed
         DOTNET_SDK_VERSION = '3.1'
-        IMAGE_TAG = 'your-image-name:latest'
+        IMAGE_TAG = 'muhohoweb:3.0.0'
     }
 
     stages {
@@ -22,7 +22,7 @@ pipeline {
                     // Login to Docker registry if necessary
                     // sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     // Build and push Docker image
-                    // docker.build(IMAGE_TAG, './publish').push()
+                    docker.build(IMAGE_TAG, './publish').push()
                 }
             }
         }
