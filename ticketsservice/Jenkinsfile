@@ -23,7 +23,7 @@ pipeline {
                     echo "Build the Image"
 
                     sh '''
-                        docker --help
+                        /opt/homebrew/bin/docker --help
 
                     '''
                     // Login to Docker registry if necessary
