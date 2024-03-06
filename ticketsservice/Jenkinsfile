@@ -33,14 +33,22 @@ pipeline {
             }
         }
 
+        stage('Deploy Config maps') {
+            steps {
+                script {
+                    sh '''
+                        kubectl apply -f kubernetes/db-configs.yml
+                    '''
+                }
+            }
         stage('Push to Docker hub') {
             steps {
                 script {
                     echo "Pushing to Docker hub"
 
-                    sh '''
-                        /opt/homebrew/bin/docker push muhohoweb/ticketsservice:1.0.5
-                    '''
+                    // sh '''
+                    //     /opt/homebrew/bin/docker push muhohoweb/ticketsservice:1.0.5
+                    // '''
                     // Login to Docker registry if necessary
                     //--platform linux/
                     //--platform linux/arm64
