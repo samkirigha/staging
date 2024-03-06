@@ -20,9 +20,9 @@ pipeline {
                 script {
                     echo "Build the Image"
 
-                    sh '''
-                        /opt/homebrew/bin/docker build -t muhohoweb/ticketsservice:1.0.5  ticketsservice
-                    '''
+                    // sh '''
+                    //     /opt/homebrew/bin/docker build -t muhohoweb/ticketsservice:1.0.5  ticketsservice
+                    // '''
                     // Login to Docker registry if necessary
                     //--platform linux/
                     //--platform linux/arm64
