@@ -21,10 +21,29 @@ pipeline {
                     echo "Build the Image"
 
                     sh '''
-                        /opt/homebrew/bin/docker build -t muhohoweb/ticketsservice:3.0.0 --platform linux/amd64 ticketsservice
-
+                        /opt/homebrew/bin/docker build -t muhohoweb/ticketsservice:1.0.5  ticketsservice
                     '''
                     // Login to Docker registry if necessary
+                    //--platform linux/
+                    //--platform linux/arm64
+                    // sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    // Build and push Docker image
+                    // docker.build(IMAGE_TAG, './publish').push()
+                }
+            }
+        }
+
+        stage('Push to Docker hub') {
+            steps {
+                script {
+                    echo "Pushing to Docker hub"
+
+                    sh '''
+                        /opt/homebrew/bin/docker push muhohoweb/ticketsservice:1.0.5
+                    '''
+                    // Login to Docker registry if necessary
+                    //--platform linux/
+                    //--platform linux/arm64
                     // sh 'echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
                     // Build and push Docker image
                     // docker.build(IMAGE_TAG, './publish').push()
