@@ -48,9 +48,9 @@ pipeline {
         stage('Deploy Config maps') {
             steps {
                 script {
-                    withCredentials([azureServicePrincipal('8304c484-45d0-4c61-9e1a-85e0cf0144af')]) {
+                    withCredentials([azureManagedIdentity('8304c484-45d0-4c61-9e1a-85e0cf0144af')]) {
                         sh '/opt/homebrew/bin/az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
-             }
+                    }
                 }
             }
         }
