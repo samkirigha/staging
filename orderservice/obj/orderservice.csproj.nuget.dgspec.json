@@ -1,27 +1,25 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {}
+    "/Users/jeremy/work_dir/staging/orderservice/orderservice.csproj": {}
   },
   "projects": {
-    "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj": {
+    "/Users/jeremy/work_dir/staging/orderservice/orderservice.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
+        "projectUniqueName": "/Users/jeremy/work_dir/staging/orderservice/orderservice.csproj",
         "projectName": "orderservice",
-        "projectPath": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\orderservice.csproj",
-        "packagesPath": "C:\\Users\\SamuelKirigha\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\SamuelKirigha\\projects\\devops\\orderservice\\obj\\",
+        "projectPath": "/Users/jeremy/work_dir/staging/orderservice/orderservice.csproj",
+        "packagesPath": "/Users/jeremy/.nuget/packages/",
+        "outputPath": "/Users/jeremy/work_dir/staging/orderservice/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\SamuelKirigha\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/jeremy/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -68,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.101/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

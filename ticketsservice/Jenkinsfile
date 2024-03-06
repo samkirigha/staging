@@ -49,7 +49,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        /opt/homebrew/bin/kubectl get nodes
+                        echo "My subscription id is $AZURE_SUBSCRIPTION_ID"
                     '''
                 }
             }
