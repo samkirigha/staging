@@ -48,16 +48,13 @@ pipeline {
         stage('Deploy Config maps') {
             steps {
                 script {
-                   withCredentials([string(credentialsId: '8304c484-45d0-4c61-9e1a-85e0cf0144af ', variable: '372b7e76-d4b7-4e4f-a512-e3128187cfb9'),
-                 string(credentialsId: 'azure-service-principal-secret', variable: '372b7e76-d4b7-4e4f-a512-e3128187cfb9'),
-                 string(credentialsId: 'azure-tenant-id', variable: 'ceec2061-bf39-4e09-9575-15cbe5250f93')]) {
                 sh '''
                 /opt/homebrew/bin/az login --service-principal \
                     -u $AZURE_CLIENT_ID \
                     -p $AZURE_CLIENT_SECRET \
                     -t $AZURE_TENANT_ID
                 '''
-}
+                }
 
                 }
             }
