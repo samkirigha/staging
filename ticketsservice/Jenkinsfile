@@ -37,7 +37,7 @@ pipeline {
             steps {
                 script {
                     sh '''
-                        kubectl apply -f kubernetes/db-configs.yml
+                        /opt/homebrew/bin/kubectl apply -f kubernetes/db-configs.yml
                     '''
                 }
             }
