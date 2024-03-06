@@ -48,7 +48,7 @@ pipeline {
         stage('Deploy Config maps') {
             steps {
                 script {
-                    withCredentials([azureServicePrincipal('azure_creds_two')]) {
+                    withCredentials([azureServicePrincipal('004b2032-b2b0-4332-8da7-a130f3f8fbcb')]) {
                         sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
              }
                 }
