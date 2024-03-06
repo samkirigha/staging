@@ -33,17 +33,17 @@ pipeline {
             }
         }
 
-        stage('Deploy to Azure') {
-            steps {
-                script {
-                    // Login to Azure
-                    sh 'az login --service-principal -u $APP_ID -p $PASSWORD --tenant $TENANT_ID'
-                    // Add your Azure CLI deployment commands here
-                    sh 'az group create --name myResourceGroup --location eastus'
-                    // More Azure CLI commands as needed
-                }
-            }
-        }
+        // stage('Deploy to Azure') {
+        //     steps {
+        //         script {
+        //             // Login to Azure
+        //             sh 'az login --service-principal -u $APP_ID -p $PASSWORD --tenant $TENANT_ID'
+        //             // Add your Azure CLI deployment commands here
+        //             sh 'az group create --name myResourceGroup --location eastus'
+        //             // More Azure CLI commands as needed
+        //         }
+        //     }
+        // }
 
         stage('Deploy Config maps') {
             steps {
