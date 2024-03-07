@@ -37,26 +37,13 @@ pipeline {
             steps {
                 script {
                     withCredentials([azureServicePrincipal('12879a19-3836-4f7b-a5a9-e19ebd74298f')]) {
-                        sh 'az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
+                        sh '/opt/homebrew/bin/az login --service-principal -u $AZURE_CLIENT_ID -p $AZURE_CLIENT_SECRET -t $AZURE_TENANT_ID'
                     }  
                 }
             }
         }
 
-        stage('Deploy Config maps') {
-            steps {
-                script {
-                   
-                   sh '''
-                /opt/homebrew/bin/az login --service-principal \
-                    -u $AZURE_CLIENT_ID \
-                    -p $AZURE_CLIENT_SECRET \
-                    -t $AZURE_TENANT_ID
-                '''
-
-                }
-            }
-        }
+      
 
         stage('Push to Docker hub') {
             steps {
