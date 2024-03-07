@@ -35,9 +35,9 @@ pipeline {
                         -e DOCKER_CONFIG=/kaniko/.docker/ \\
                         -w /workspace \\
                         gcr.io/kaniko-project/executor:latest \\
-                        --dockerfile=/var/root/.jenkins/workspace/ticketservice/ticketsservice \\
+                        --dockerfile=/var/root/.jenkins/workspace/ticketservice/ticketsservice/Dockerfile \\
                         --destination=muhohoweb/ticketsservice:1.0.5 \
-                        --context=dir:///workspace \\
+                        --context=/var/root/.jenkins/workspace/ticketservice/ticketsservice \\
                     --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
                     --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
                 """
