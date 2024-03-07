@@ -30,7 +30,7 @@ pipeline {
                 
                 // Run Kaniko to build and push the Docker image to Docker Hub
                 sh """
-                docker run --rm \\
+                /usr/local/bin/docker run --rm \\
                     -v ${WORKSPACE}:${WORKSPACE} \\
                     -e DOCKER_CONFIG=/kaniko/.docker/ \\
                     -w ${WORKSPACE} \\
