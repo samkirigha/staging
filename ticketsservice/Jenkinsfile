@@ -8,6 +8,7 @@ pipeline {
         KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
         DOCKERFILE_PATH = '.' // Path to your Dockerfile and context
         DESTINATION = 'muhohoweb/ticketsservice:3.0.0' // Example destination
+        DOCKERHUB_USERNAME="muhohoweb@gmail.com"
         // Ensure to replace with your actual Docker registry/repository
     }
 
