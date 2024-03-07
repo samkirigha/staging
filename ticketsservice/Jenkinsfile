@@ -28,22 +28,19 @@ pipeline {
                 // Define your Docker Hub image name
                 def dockerImage = 'muhohoweb/ticketsservice:1.0.5'
                 
-                sh '''
-                    echo ${WORKSPACE}
-                '''
                 // Run Kaniko to build and push the Docker image to Docker Hub
-                // sh """
-                // docker run --rm \\
-                //     -v ${WORKSPACE}:${WORKSPACE} \\
-                //     -e DOCKER_CONFIG=/kaniko/.docker/ \\
-                //     -w ${WORKSPACE} \\
-                //     gcr.io/kaniko-project/executor:latest \\
-                //     --dockerfile=${WORKSPACE}/Dockerfile \\
-                //     --destination=${dockerImage} \\
-                //     --context=dir://${WORKSPACE} \\
-                //     --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
-                //     --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
-                // """
+                sh """
+                docker run --rm \\
+                    -v ${WORKSPACE}:${WORKSPACE} \\
+                    -e DOCKER_CONFIG=/kaniko/.docker/ \\
+                    -w ${WORKSPACE} \\
+                    gcr.io/kaniko-project/executor:latest \\
+                    --dockerfile=${WORKSPACE}/ticketsservice/Dockerfile \\
+                    --destination=${dockerImage} \\
+                    --context=dir://${WORKSPACE} \\
+                    --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
+                    --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
+                """
                 // Note that DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD are available as environment variables within this block
             }
         }
