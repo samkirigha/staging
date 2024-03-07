@@ -35,7 +35,7 @@ pipeline {
                             -e DOCKER_CONFIG=/kaniko/.docker/ \\
                             -w ${WORKSPACE} \\
                             gcr.io/kaniko-project/executor:latest \\
-                            --dockerfile=${WORKSPACE}/Dockerfile \\
+                            --dockerfile=${WORKSPACE}/ticketsservice/Dockerfile \\
                             --destination=${dockerImage} \\
                             --context=dir://${WORKSPACE} \\
                             --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
