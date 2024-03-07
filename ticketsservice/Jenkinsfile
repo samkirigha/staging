@@ -37,7 +37,7 @@ pipeline {
                     gcr.io/kaniko-project/executor:latest \\
                     --dockerfile=${WORKSPACE}/ticketsservice/Dockerfile \\
                     --destination=${dockerImage} \\
-                    --context=dir://${WORKSPACE}/ticketsservice \\
+                    --context=dir://${WORKSPACE}/ticketsservice/ \\
                     --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
                     --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
                 """
