@@ -30,14 +30,14 @@ pipeline {
                 
                 // Run Kaniko to build and push the Docker image to Docker Hub
                 sh """
-                /usr/local/bin/docker run --rm \\
-                    -v ${WORKSPACE}:${WORKSPACE} \\
-                    -e DOCKER_CONFIG=/kaniko/.docker/ \\
-                    -w ${WORKSPACE} \\
-                    gcr.io/kaniko-project/executor:latest \\
-                    --dockerfile=${WORKSPACE}/ticketsservice/Dockerfile \\
-                    --destination=${dockerImage} \\
-                    --context=dir://${WORKSPACE}/ticketsservice/ \\
+                                        /usr/local/bin/docker run --rm \
+                        -v /var/root/.jenkins/workspace/ticketservice:/workspace \
+                        -e DOCKER_CONFIG=/kaniko/.docker/ \
+                        -w /workspace \
+                        gcr.io/kaniko-project/executor:latest \
+                        --dockerfile=/workspace/ticketsservice/Dockerfile \
+                        --destination=muhohoweb/ticketsservice:1.0.5 \
+                        --context=dir:///workspace \\
                     --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
                     --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
                 """
