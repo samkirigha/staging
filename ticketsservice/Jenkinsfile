@@ -28,19 +28,31 @@ pipeline {
                 // Define your Docker Hub image name
                 def dockerImage = 'muhohoweb/ticketsservice:1.0.5'
                 
-                // Run Kaniko to build and push the Docker image to Docker Hub
                 sh """
-                       /usr/local/bin/docker run --rm \\
-                        -v /var/root/.jenkins/workspace/ticketservice \\
-                        -e DOCKER_CONFIG=/kaniko/.docker/ \\
-                        -w /workspace \\
-                        gcr.io/kaniko-project/executor:latest \\
-                        --dockerfile=Dockerfile \\
-                        --destination=muhohoweb/ticketsservice:1.0.5 \
-                        --context=/var/root/.jenkins/workspace/ticketservice/ticketsservice \\
-                    --build-arg DOCKERHUB_USERNAME=$DOCKERHUB_USERNAME \\
-                    --build-arg DOCKERHUB_PASSWORD=$DOCKERHUB_PASSWORD
+                    apiVersion: v1
+                    kind: Pod
+                    metadata:
+                      name: kaniko
+                    spec:
+                      containers:
+                        - name: kaniko
+                          image: gcr.io/kaniko-project/executor:latest
+                          args:
+                            - "--dockerfile=Dockerfile"
+                            - "--context=/var/root/.jenkins/workspace/ticketservice/ticketsservice"
+                            - "--destination=muhohoweb/ticketsservice:1.0.5"
+                          volumeMounts:
+                            # when not using instance role
+                            - name: aws-secret
+                              mountPath: /root/.aws/
+                      restartPolicy: Never
+                      volumes:
+                        # when not using instance role
+                        - name: aws-secret
+                          secret:
+                            secretName: aws-secret
                 """
+           
                 // Note that DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD are available as environment variables within this block
             }
         }
