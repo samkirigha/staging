@@ -24,7 +24,7 @@ pipeline {
     steps {
         script {
             // Inject the credentials from Jenkins credentials store
-            withCredentials([usernamePassword(credentialsId: 'dockerHubCredentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+            withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
                 // Define your Docker Hub image name
                 def dockerImage = 'muhohoweb/ticketsservice:1.0.5'
                 
