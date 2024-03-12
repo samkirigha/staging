@@ -12,31 +12,27 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-  
+    defaults:
+      run:
+        working-directory: ./ticketsservice  # Set global working directory
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
         with:
           ref: master
           path: .github/workflows/
-          
+
       - name: Deploy to ${{inputs.environment}}
         run: |
           #Your deployment script or commands based on the environment
           echo "Deploying to ${{inputs.environment}} environment"
-          
-      - name: Change to parent directory
-        run: |
-            cd ..
-            pwd
-        
+
       - name: List directory contents
         run: pwd
-        
+
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: ../ticketsservice
 
       - name: Build
         run: dotnet build --no-restore
-        working-directory: ../ticketsservice
