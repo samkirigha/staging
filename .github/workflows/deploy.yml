@@ -35,12 +35,12 @@ jobs:
         
       - name: Restore dependencies
         run: |
-            cd ..
+            cd ../
             dotnet restore
         working-directory: ./ticketsservice
 
       - name: Build
         run: |
-          cd ..
+          cd ../
           dotnet build --no-restore
         working-directory: ./ticketsservice
