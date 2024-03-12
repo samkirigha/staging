@@ -30,10 +30,10 @@ jobs:
         with:
           environment: ${{inputs.environment}}
       
-      - name: Restore dependencies
-        run: dotnet restore
-        working-directory: ./ticketsservice
+      # - name: Restore dependencies
+      #   run: dotnet restore
+      #   working-directory: ./ticketsservice
 
-      - name: Build
-        run: dotnet build --no-restore
-        working-directory: ./ticketsservice
+      # - name: Build
+      #   run: dotnet build --no-restore
+      #   working-directory: ./ticketsservice
