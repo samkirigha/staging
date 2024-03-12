@@ -24,16 +24,11 @@ jobs:
         run: |
           #Your deployment script or commands based on the environment
           echo "Deploying to ${{inputs.environment}} environment"
-
-      - name: Run Deployment Workflow
-        uses: ./.github/workflows/deploy.yml
-        with:
-          environment: ${{inputs.environment}}
       
-      # - name: Restore dependencies
-      #   run: dotnet restore
-      #   working-directory: ./ticketsservice
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: ./ticketsservice
 
-      # - name: Build
-      #   run: dotnet build --no-restore
-      #   working-directory: ./ticketsservice
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: ./ticketsservice
