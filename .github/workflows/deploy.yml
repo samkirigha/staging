@@ -27,8 +27,8 @@ jobs:
       
       - name: Restore dependencies
         run: dotnet restore
-        working-directory: ticketsservice
+        working-directory: ./ticketsservice
 
       - name: Build
         run: dotnet build --no-restore
-        working-directory: ticketsservice
+        working-directory: ./ticketsservice
