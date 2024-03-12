@@ -2,11 +2,12 @@ name: Deployment Workflow
 
 on:
   workflow_dispatch:
-    # inputs:
-    #   environment:
-    #     description: 'The target environment'
-    #     type: string
-    #     required: true
+    inputs:
+      environment:
+        description: 'The target environment'
+        type: string
+        required: true
+        default: "Production"
 
 jobs:
   deploy:
@@ -23,3 +24,16 @@ jobs:
         run: |
           #Your deployment script or commands based on the environment
           echo "Deploying to ${{inputs.environment}} environment"
+
+      - name: Run Deployment Workflow
+        uses: ./.github/workflows/deploy.yml
+        with:
+          environment: ${{inputs.environment}}
+      
+      - name: Restore dependencies
+        run: dotnet restore
+        working-directory: ./ticketsservice
+
+      - name: Build
+        run: dotnet build --no-restore
+        working-directory: ./ticketsservice
