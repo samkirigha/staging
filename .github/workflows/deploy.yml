@@ -23,7 +23,7 @@ jobs:
       - name: Deploy to ${{inputs.environment}}
         run: |
           #Your deployment script or commands based on the environment
-          echo "Deploying to ${{inputs.environment}} environment "
+          echo "Deploying to ${{inputs.environment}} environment"
       
       - name: Restore dependencies
         run: dotnet restore
