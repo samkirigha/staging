@@ -25,6 +25,9 @@ jobs:
           #Your deployment script or commands based on the environment
           echo "Deploying to ${{inputs.environment}} environment"
           
+      - name: Change to parent directory
+        run: cd ..
+        
       - name: List directory contents
         run: pwd
         
