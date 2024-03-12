@@ -34,13 +34,9 @@ jobs:
         run: pwd
         
       - name: Restore dependencies
-        run: |
-            cd ../
-            dotnet restore
-        working-directory: ./ticketsservice
+        run: dotnet restore
+        working-directory: ../ticketsservice
 
       - name: Build
-        run: |
-          cd ../
-          dotnet build --no-restore
-        working-directory: ./ticketsservice
+        run: dotnet build --no-restore
+        working-directory: ../ticketsservice
