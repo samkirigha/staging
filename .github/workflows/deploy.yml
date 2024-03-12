@@ -24,7 +24,9 @@ jobs:
         run: |
           #Your deployment script or commands based on the environment
           echo "Deploying to ${{inputs.environment}} environment"
-      
+          
+      - name: List directory contents
+        run: ls -la
       - name: Restore dependencies
         run: dotnet restore
         working-directory: ./ticketsservice
