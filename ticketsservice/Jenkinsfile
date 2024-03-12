@@ -1,0 +1,75 @@
+pipeline {
+    agent any
+
+    environment {
+        // Define any environment variables needed
+        DOTNET_SDK_VERSION = '8.0.101'
+        IMAGE_TAG = 'muhohoweb:3.0.0'
+        KANIKO_IMAGE = 'gcr.io/kaniko-project/executor:latest'
+        DOCKERFILE_PATH = '.' // Path to your Dockerfile and context
+        DESTINATION = 'muhohoweb/ticketsservice:3.0.0' // Example destination
+        DOCKERHUB_USERNAME="muhohoweb@gmail.com"
+        // Ensure to replace with your actual Docker registry/repository
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout from source control
+                git url: 'https://github.com/samkirigha/staging.git', branch: 'master'
+            }
+        }
+
+        stage('Build and Push Docker Image with Kaniko') {
+    steps {
+        script {
+            // Inject the credentials from Jenkins credentials store
+            withCredentials([usernamePassword(credentialsId: 'dockerHubCreds', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                // Define your Docker Hub image name
+                def dockerImage = 'muhohoweb/ticketsservice:1.0.5'
+                
+                sh """
+                    gcr.io/kaniko-project/executor:latest \\
+                                                --dockerfile=Dockerfile \\
+                                                --context=/var/root/.jenkins/workspace/ticketservice/ticketsservice \\
+                                                --destination=muhohoweb/ticketsservice:1.0.5
+                """
+           
+                // Note that DOCKERHUB_USERNAME and DOCKERHUB_PASSWORD are available as environment variables within this block
+            }
+        }
+    }
+}
+
+
+
+
+        stage('Deploy to Azure') {
+            steps {
+                script {
+                    withCredentials([azureServicePrincipal('39fb0bee-8be9-40fa-a60c-0c20f1edb1fa')]) {
+                        sh '''
+                            /opt/homebrew/bin/az login --service-principal \\
+                            -u $AZURE_CLIENT_ID \\
+                            -p $AZURE_CLIENT_SECRET \\
+                            -t $AZURE_TENANT_ID
+                            /opt/homebrew/bin/az --help
+                        '''
+                    }  
+                }
+            }
+        }
+        
+
+        stage('Push to Docker hub') {
+            steps {
+                script {
+                    withCredentials([usernamePassword(credentialsId: 'dockerHubCredentials', passwordVariable: 'DOCKERHUB_PASSWORD', usernameVariable: 'DOCKERHUB_USERNAME')]) {
+                   // Kaniko command here
+                    }
+
+                }
+            }
+        }
+    }
+}

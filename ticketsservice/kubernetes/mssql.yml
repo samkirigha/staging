@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tickets-mssql-pod
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: tickets-mssql
+  template:
+    metadata:
+      labels:
+        app: tickets-mssql
+    spec:
+      containers:
+        - name: mssql
+          image: mcr.microsoft.com/mssql/server:2022-preview-ubuntu-22.04
+          imagePullPolicy: Always
+          envFrom:
+            - configMapRef:
+               name: tickets-mssql-config
+            - secretRef:
+                name: tickets-mssql-secret
+          ports:
+            - containerPort: 1433
